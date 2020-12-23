@@ -102,4 +102,39 @@ function avaliaPontuacoes(stringPontuacoes) {
 
 console.log(avaliaPontuacoes(stringPontuacoes));
 
-// 9º - 
+// 9º - notas
+function arredondarNota(nota) {
+    return (nota % 5) > 2 ? nota + (5 - (nota % 5)) : nota;
+}
+function notas(nota) {
+    let notaAtualizada = arredondarNota(nota);
+    if (notaAtualizada >= 40) console.log(`Aprovado com nota: ${notaAtualizada}`)
+    else console.log(`Reprovado com nota: ${notaAtualizada}`)
+}
+notas(100)
+notas(30)
+notas(38)
+notas(88)
+notas(61)
+
+// 10º - divisivel por 3
+function ehDividivelPorTres(numero) {
+    console.log(numero % 3 === 0 ? true : false);
+}
+ehDividivelPorTres(3)
+ehDividivelPorTres(4)
+ehDividivelPorTres(6)
+ehDividivelPorTres(9)
+ehDividivelPorTres(11)
+
+// 11º - bissexto
+function bissexto(ano) {    
+    if (ano % 4 === 0) return console.log(true);
+    else if (ano % 100 === 0) return console.log(false);
+    else if (ano % 400 === 0) return console.log(true);
+    else return console.log(false);
+}
+bissexto(2020);
+bissexto(2019);
+bissexto(2016);
+bissexto(2024);
