@@ -1,15 +1,31 @@
 {
+  "MeuArquivoComentario": [
+    "Esse arquivo package.json é uma espécie de manifesto da nossa aplicação", 
+    "contém todas as informações para iniciarmos nossa aplicação", 
+    "o atributo main contem o arquivo que o start irá ler quando executarmos o nodemon",
+    "dentro de scripts podemos ter um atributo dev que seria uma alternativa ao start",
+    "no atributo 'test' podemos definir quem executará nossos testes unitários",
+    "em 'dependencies' temos as dependencias do nosso projeto, ou seja, não precisamos mandar a pasta node_modules",
+    "para o git, pois um simples comando 'npm i' instala todas as dependencias que estão relacionas ali",
+    "no 'dependencies' está as dependencias resumidamente, em package-lock.json temos os componentes mais detalhados",
+    "que o 'npm i' usa como base para instalar nossas dependencias",
+    "padrao de versao: Padrão Versionamento Sêmantico - 1.0.0 - Major.Minor.Path(hotfix)",
+    "'^' define que podemos atualizar somente para versões minor, ou seja somente o numero do meio. EX: 1.3.0..1.4.0..1.5.0... < 2.0.0",
+    "'~' define que podemos atualizar somente correções de bugs pois podemos mudar somente o último número da versao. EX: 1.2.1..1.2.2..1.2.3... < 1.3.0",
+    "sem nenhum caracter, somente o numero da versão, define que deve ser exatamente aquela versão, sem alterações"
+  ],
   "name": "funcionarios",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "funcionarios.js",
   "scripts": {
+    "start": "nodemon",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {    
+  "dependencies": {
     "axios": "^0.21.1"
   }
 }
