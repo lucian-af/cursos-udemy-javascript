@@ -8,7 +8,7 @@ function processarArquivo(caminho) {
     })
 }
 
-const caminho = path.join(__dirname, '../arquivos/dados.txt');
+const caminho = path.join(__dirname, '../../arquivos/dados.txt');
 // processarArquivo(caminho)
 //     .then(data => data.toString())
 //     .then(data => data.split('\n'))

@@ -1,17 +1,19 @@
 const fs = require('fs');
 const path = require('path');
 
-function lerDiretorio(caminho, extensao) {
-    return new Promise((resolve, reject) => {
-        try {
-            let arquivos = fs.readdirSync(caminho)
-                .filter(arquivos => arquivos.endsWith(extensao))
-                .map(arquivo => path.join(caminho, arquivo));
-            resolve(arquivos);
-        } catch (e) {
-            reject(e);
-        }
-    });
+function lerDiretorio(caminho) {
+    return extensao => {
+        return new Promise((resolve, reject) => {
+            try {
+                let arquivos = fs.readdirSync(caminho)
+                    .filter(arquivos => arquivos.endsWith(extensao))
+                    .map(arquivo => path.join(caminho, arquivo));
+                resolve(arquivos);
+            } catch (e) {
+                reject(e);
+            }
+        });
+    }
 }
 function lerArquivo(caminho) {
     return new Promise((resolve, reject) => {
@@ -47,12 +49,23 @@ function removerSimbolos(simbolos) {
         return array.map(el => {
             return simbolos.reduce((acc, simbolo) => {
                 return acc.split(simbolo).join('');
-            }, el);            
+            }, el);
         })
     }
 }
 
+function composicao(...fns) {
+    return valor => fns.reduce(async (acc, fn) => {
+        if (Promise.resolve(acc) === acc) {
+            return fn(await acc)
+        } else {
+            return fn(acc)
+        }
+    }, valor)
+}
+
 module.exports = {
+    composicao,
     lerDiretorio,
     lerArquivo,
     lerArquivos,

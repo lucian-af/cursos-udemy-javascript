@@ -21,17 +21,19 @@ const ordernarPorAtributoNumerico = (attr, ordem = 'asc') => {
     }
 }
 
-fn.lerDiretorio(caminho, '.srt')
-    .then(fn.lerArquivos)
-    .then(mesclarConteudos)
-    .then(separarPorLinhas)
-    .then(fn.removerSeVazio)
-    .then(fn.removerSeIncluir('-->'))
-    .then(fn.removerNumeros)
-    .then(fn.removerSimbolos(simbolos))
-    .then(mesclarConteudos)
-    .then(separarPorPalavras)
-    .then(fn.removerSeVazio)
-    .then(agruparPalavras)
-    .then(ordernarPorAtributoNumerico('qtde', 'desc'))
-    .then(console.log);
+fn.composicao(
+    fn.lerDiretorio(caminho),
+    fn.lerArquivos,
+    mesclarConteudos,
+    separarPorLinhas,
+    fn.removerSeVazio,
+    fn.removerSeIncluir('-->'),
+    fn.removerNumeros,
+    fn.removerSimbolos(simbolos),
+    mesclarConteudos,
+    separarPorPalavras,
+    fn.removerSeVazio,
+    agruparPalavras,
+    ordernarPorAtributoNumerico('qtde', 'desc'),
+    console.log
+)('.srt')

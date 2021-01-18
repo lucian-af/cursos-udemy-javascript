@@ -2,7 +2,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const caminho = path.join(__dirname, '../arquivos/dados.txt');
+const caminho = path.join(__dirname, '../../arquivos/dados.txt');
 
 console.log('Inicio...');
 fs.readFile(caminho, (_, data) => console.log(`Comecei agora... \n${data.toString()} \n... terminei`));
