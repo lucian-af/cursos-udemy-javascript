@@ -1,4 +1,4 @@
-const { toArray, map } = require('rxJs/operators');
+const { toArray, map, groupBy, mergeMap, reduce } = require('rxJs/operators');
 const path = require('path');
 const fn = require('./funcoes');
 const _ = require('lodash');
@@ -17,8 +17,10 @@ fn.lerDiretorio(caminho)
         fn.separarTextoPor(' '),
         fn.removerSeVazio(),
         fn.removerNumeros(),
+        groupBy(item => item),
+        mergeMap(grupo => grupo.pipe(toArray())),
+        map(palavras => ({ elememto: palavras[0], qtde: palavras.length })),
         toArray(),
-        fn.agruparElementos(),
         map(array => _.sortBy(array, el => -el.qtde))
     )
     .subscribe(console.log)
